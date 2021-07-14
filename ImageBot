@@ -1,0 +1,32 @@
+import discord 
+import random 
+import os 
+client = discord.Client()
+#getting ready and turned on
+@client.event
+async def on_ready():
+    gen_channel= client.get_channel(863493713195696128)
+    await gen_channel.send(#Insert message here on startup)
+#getting turned off 
+@client.event
+async def on_message(message):
+    gen_channel= client.get_channel(863493713195696128)
+    if message.content=='goodbot':
+        await gen_channel.send(#Optional wholesome message)
+@client.event
+async def on_disconnect():
+    gen_channel= client.get_channel(863493713195696128)
+    await gen_channel.send(#A goodbye message)
+
+
+#messages and stuff 
+
+@client.event
+async def on_message(message):
+    gen_channel= client.get_channel(863493713195696128)
+    if message.content == "#Your message":
+        path = random.choice(os.listdir('#File Path'))
+        await gen_channel.send(file=discord.File(#File Path +path))
+      
+
+client.run(#your token goes here)
